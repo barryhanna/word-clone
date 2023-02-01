@@ -16,8 +16,8 @@ const GuessInput = ({ addGuess }) => {
         id="guess-input"
         value={guess}
         type="text"
-        maxLength={5}
         minLength={5}
+        maxLength={5}
         onChange={(e) => setGuess(e.target.value.toUpperCase())}
       />
     </form>
