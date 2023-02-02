@@ -1,12 +1,18 @@
 import React from 'react';
 import { range } from '../../utils';
-import { checkGuess } from '../../game-helpers';
+import { checkGuess, hasWonGame } from '../../game-helpers';
 
-const Guess = ({ word = '', correctWord }) => {
+const Guess = ({ word = '', correctWord, setGameOver, setHasWon }) => {
   const result = checkGuess(word, correctWord);
+  const hasWon = hasWonGame(word, correctWord);
+
+  if (hasWon) {
+    setHasWon(true);
+    setGameOver(true);
+  }
 
   return (
-    <p key={word} className="guess">
+    <p className="guess">
       {range(5).map((_, i) => {
         let status = '';
         if (result) {

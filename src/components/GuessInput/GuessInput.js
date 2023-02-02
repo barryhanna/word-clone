@@ -5,6 +5,11 @@ const GuessInput = ({ addGuess }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (guess.length !== 5) {
+      window.alert('Please enter exactly 5 characters. ');
+      return;
+    }
     addGuess((prevGuesses) => [...prevGuesses, guess]);
     setGuess('');
   }
@@ -13,11 +18,12 @@ const GuessInput = ({ addGuess }) => {
     <form className="guess-input-wrapper" onSubmit={handleSubmit}>
       <label htmlFor="guess-input">Enter guess:</label>
       <input
+        required
+        minLength={5}
+        maxLength={5}
         id="guess-input"
         value={guess}
         type="text"
-        minLength={5}
-        maxLength={5}
         onChange={(e) => setGuess(e.target.value.toUpperCase())}
       />
     </form>

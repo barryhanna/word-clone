@@ -4,7 +4,7 @@ import Guess from '../Guess';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import { range } from '../../utils';
 
-const GuessResults = ({ results, correctWord }) => {
+const GuessResults = ({ results, correctWord, setGameOver, setHasWon }) => {
   return (
     <div className="guess-results">
       {range(NUM_OF_GUESSES_ALLOWED).map((i) => (
@@ -12,6 +12,8 @@ const GuessResults = ({ results, correctWord }) => {
           key={`${results[i]}-${i}`}
           word={results[i]}
           correctWord={correctWord}
+          setGameOver={setGameOver}
+          setHasWon={setHasWon}
         />
       ))}
     </div>

@@ -23,3 +23,13 @@ export function checkGuess(guess, answer) {
     };
   });
 }
+
+export function hasWonGame(guess, answer) {
+  const results = checkGuess(guess, answer);
+  if (results?.length === answer?.length) {
+    const correct = results.filter((letter) => letter.status === 'correct');
+    const gameWon = correct.length === answer.length;
+    return gameWon;
+  }
+  return false;
+}
